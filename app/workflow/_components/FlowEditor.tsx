@@ -28,7 +28,7 @@ const FlowEditor = ({ workflow }: Props) => {
         onNodesChange={onNodesChange}
       >
         <Controls position="top-left" />
-        <Background variant={BackgroundVariant.Dots} />
+        <Background variant={BackgroundVariant.Dots} gap={12} />
       </ReactFlow>
     </main>
   );
