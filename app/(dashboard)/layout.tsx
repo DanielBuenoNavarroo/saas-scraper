@@ -3,9 +3,9 @@ import DesktopSidebar from "@/components/Sidebar";
 import { ModeToggle } from "@/components/ThemeModeToggle";
 import { Separator } from "@/components/ui/separator";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-import React from "react";
+import { ReactNode } from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex h-screen">
       <DesktopSidebar />

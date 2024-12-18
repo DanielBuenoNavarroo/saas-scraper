@@ -1,9 +1,9 @@
 import Logo from "@/components/Logo";
 import { ModeToggle } from "@/components/ThemeModeToggle";
 import { Separator } from "@/components/ui/separator";
-import React from "react";
+import { ReactNode } from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex flex-col w-full h-screen">
       {children}

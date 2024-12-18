@@ -24,8 +24,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useMutation } from "@tanstack/react-query";
-import { CreateWorkflow } from "@/actions/workflows/createWorkflow";
 import { toast } from "sonner";
+import { CreateWorkflow } from "@/actions/workflows/createWorkflow";
 
 interface Props {
   triggerText?: string;
@@ -54,7 +54,6 @@ const CreateWorkflowDialog = ({ triggerText }: Props) => {
 
   const onSubmit = useCallback(
     (values: createWorkflowSchemaType) => {
-      console.log("Calling CreateWorkflow with values:", values);
       toast.loading("Creating workflow...", { id: "create-workflow" });
       mutate(values);
     },

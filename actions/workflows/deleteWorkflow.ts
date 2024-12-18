@@ -4,18 +4,15 @@ import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-interface Props {
-  id: string;
-}
-
-export const DeleteWorkflow = async ({ id }: Props) => {
+export async function DeleteWorkflow(id: string) {
+  console.log("@DELETEWORKFLOW");
   const { userId } = await auth();
 
   if (!userId) {
     throw new Error("unautenticated");
   }
 
-  await prisma.workflow.delete({
+  const res = await prisma.workflow.delete({
     where: {
       id,
       userId,
@@ -23,4 +20,4 @@ export const DeleteWorkflow = async ({ id }: Props) => {
   });
 
   revalidatePath("/workflows");
-};
+}

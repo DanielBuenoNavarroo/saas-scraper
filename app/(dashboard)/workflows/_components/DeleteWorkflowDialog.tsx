@@ -10,7 +10,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
@@ -47,16 +46,18 @@ const DeleteWorkflowDialog = ({
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            If you delete this workflow, you will not be able to recover it.
-            <div className="flex flex-col py-4 gap-2">
-              <p>
+            <span>
+              If you delete this workflow, you will not be able to recover it.
+            </span>
+            <span className="flex flex-col py-4 gap-2">
+              <span>
                 If you are sure, enter <b>{workflowName}</b> to confirm
-              </p>
+              </span>
               <Input
                 value={confirmText}
                 onChange={(e) => setConfirmText(e.target.value)}
               />
-            </div>
+            </span>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -66,9 +67,10 @@ const DeleteWorkflowDialog = ({
           <AlertDialogAction
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             disabled={confirmText !== workflowName || isPending}
-            onClick={() => {
+            onClick={async () => {
               toast.loading("Deleting workflow...", { id: workflowId });
-              mutate({ id: workflowId });
+              console.log("workflowId", workflowId);
+              DeleteWorkflow(workflowId as string);
             }}
           >
             Delete

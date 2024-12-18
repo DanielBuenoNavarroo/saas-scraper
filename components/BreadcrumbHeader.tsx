@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,14 +20,14 @@ const BreadcrumbHeader = () => {
       <Breadcrumb>
         <BreadcrumbList>
           {paths.map((path, index) => (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <BreadcrumbItem>
                 <BreadcrumbLink className="capitalize" href={`/${path}`}>
                   {path === "" ? "home" : path}
                 </BreadcrumbLink>
               </BreadcrumbItem>
               {index < paths.length - 1 && <BreadcrumbSeparator />}
-            </React.Fragment>
+            </Fragment>
           ))}
         </BreadcrumbList>
       </Breadcrumb>
